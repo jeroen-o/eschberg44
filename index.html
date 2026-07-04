@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eschberg 44, Amersfoort · Vathorst — Boog Makelaardij</title>
+<meta name="description" content="Kant-en-klare, stijlvolle jaren-30 woning met sfeervolle ronde erker in Vathorst. 174 m² wonen, 268 m² perceel, 4 slaapkamers, A+ energielabel. € 935.000 v.o.n.">
+<meta property="og:title" content="Eschberg 44, Amersfoort · Vathorst">
+<meta property="og:description" content="Stijlvolle jaren-30 woning met ronde erker — verscholen in het groen van Vathorst. 174 m² · 4 slaapkamers · A+ label · € 935.000 v.o.n.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; }
+  ::selection { background: #3E4B34; color: #F4EEE3; }
+  @keyframes floatUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes scrollNudge { 0%,100% { transform: translateY(0); opacity: .5; } 50% { transform: translateY(7px); opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; scroll-behavior: auto !important; } }
+
+  .foto { background-color: #E4DBC9; background-repeat: no-repeat; display: flex; align-items: center; justify-content: center; }
+  .foto .lbl { display:none; }
+
+  .nav-link { transition: color .2s ease; }
+  .nav-link:hover { color: #F4EEE3 !important; }
+  .nav-cta { transition: background .2s ease, color .2s ease, border-color .2s ease; }
+  .nav-cta:hover { background: #F4EEE3; color: #221D16; border-color: #F4EEE3; }
+  .btn-solid { transition: opacity .2s ease; } .btn-solid:hover { opacity: .9; }
+  .btn-line { transition: background .2s ease; } .btn-line:hover { background: rgba(244,238,227,0.1); }
+  .bar-cta { transition: opacity .2s ease; } .bar-cta:hover { opacity: .9; }
+  a:focus-visible, .nav-cta:focus-visible, button:focus-visible { outline: 2px solid #3E4B34; outline-offset: 3px; }
+  #nav.nav-scrolled { background:#1C1912; box-shadow:0 1px 0 rgba(244,238,227,0.10), 0 12px 30px rgba(0,0,0,0.18); padding-top:13px; padding-bottom:13px; -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); }
+
+  /* ---- Galerij ---- */
+  .gfilter { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin:0 auto clamp(30px,4vw,46px); max-width:920px; }
+  .gpill { appearance:none; cursor:pointer; font-family:'Hanken Grotesk',sans-serif; font-size:13px; letter-spacing:.02em;
+    padding:9px 18px; border-radius:100px; border:1px solid rgba(34,29,22,0.18); background:transparent; color:#3a342b; transition:all .18s ease; }
+  .gpill:hover { border-color:#3E4B34; color:#3E4B34; }
+  .gpill[aria-pressed="true"] { background:#3E4B34; border-color:#3E4B34; color:#F4EEE3; }
+  .ggrid { display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(10px,1.4vw,18px); }
+  .gcell { position:relative; margin:0; overflow:hidden; border-radius:4px; cursor:pointer; background:#E4DBC9;
+    aspect-ratio:4/3; }
+  .gcell img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s cubic-bezier(.2,.7,.2,1); }
+  .gcell:hover img { transform:scale(1.055); }
+  .gcell::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(15,13,9,0) 55%,rgba(15,13,9,.42) 100%);
+    opacity:0; transition:opacity .25s ease; }
+  .gcell:hover::after { opacity:1; }
+  .gcap { position:absolute; left:12px; bottom:10px; z-index:2; color:#F4EEE3; font-size:12px; letter-spacing:.06em;
+    text-transform:uppercase; opacity:0; transform:translateY(6px); transition:all .25s ease; }
+  .gcell:hover .gcap { opacity:1; transform:none; }
+  .gtag { position:absolute; top:10px; left:10px; z-index:2; font-family:'Cormorant Garamond',serif; font-style:italic;
+    font-size:13px; color:#F4EEE3; background:rgba(28,25,18,.4); backdrop-filter:blur(3px); padding:3px 10px; border-radius:100px;
+    opacity:0; transition:opacity .25s ease; }
+  .gcell:hover .gtag { opacity:1; }
+
+  /* ---- Lightbox ---- */
+  #lb { position:fixed; inset:0; z-index:200; display:none; background:rgba(14,12,8,.95);
+    -webkit-backdrop-filter:blur(4px); backdrop-filter:blur(4px); }
+  #lb.open { display:flex; align-items:center; justify-content:center; }
+  #lb img { max-width:92vw; max-height:82vh; object-fit:contain; border-radius:3px; box-shadow:0 30px 80px rgba(0,0,0,.5);
+    animation:floatUp .35s ease both; }
+  #lb .lbbar { position:absolute; top:0; left:0; right:0; display:flex; align-items:center; justify-content:space-between;
+    padding:18px clamp(16px,4vw,40px); color:rgba(244,238,227,.9); font-size:13px; letter-spacing:.08em; }
+  #lb .lbcap { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:18px; }
+  .lbnav { position:absolute; top:50%; transform:translateY(-50%); width:52px; height:52px; border-radius:50%;
+    border:1px solid rgba(244,238,227,.3); background:rgba(28,25,18,.35); color:#F4EEE3; cursor:pointer; display:flex;
+    align-items:center; justify-content:center; transition:background .2s ease; }
+  .lbnav:hover { background:rgba(244,238,227,.15); }
+  #lbPrev { left:clamp(10px,3vw,30px); } #lbNext { right:clamp(10px,3vw,30px); }
+  #lbClose { width:44px; height:44px; border-radius:50%; border:1px solid rgba(244,238,227,.3); background:rgba(28,25,18,.35);
+    color:#F4EEE3; cursor:pointer; font-size:20px; line-height:1; }
+  #lbClose:hover { background:rgba(244,238,227,.15); }
+
+  .plancell { cursor:pointer; }
+
+  @media (max-width: 860px) {
+    .stats-grid { grid-template-columns: 1fr 1fr !important; }
+    .stats-grid > div:nth-child(2) { border-right: none !important; }
+    .stats-grid > div:nth-child(1), .stats-grid > div:nth-child(2) { border-bottom: 1px solid rgba(244,238,227,0.16); }
+    .ggrid { grid-template-columns:repeat(2,1fr); }
+  }
+  @media (max-width: 760px) {
+    .nav-link { display: none !important; }
+    .grid-2 { grid-template-columns: 1fr !important; }
+    .feat-3 { grid-template-columns: 1fr !important; }
+    .duur-metrics { grid-template-columns: 1fr 1fr !important; }
+    .slaap-grid { grid-template-columns: 1fr !important; }
+    .slaap-cards { grid-template-columns: 1fr !important; }
+    .plat-4 { grid-template-columns: 1fr 1fr !important; }
+    .map-4 { grid-template-columns: 1fr 1fr !important; }
+    .contact-grid { grid-template-columns: 1fr !important; }
+    .time-row { grid-template-columns: 84px 1fr !important; gap: 16px !important; }
+    .bar-float { left: 12px !important; right: 12px !important; transform: none !important; justify-content: space-between; }
+    .lbnav { width:44px; height:44px; }
+    #lb .lbcap { font-size:15px; }
+  }
+  @media (max-width: 460px){ .ggrid { grid-template-columns:1fr 1fr; gap:8px; } }
+</style>
+</head>
+<body>
+
+<div style="--accent: #3E4B34; --brick: #A05A38; background: #F4EEE3; color: #221D16; font-family: 'Hanken Grotesk', system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden;">
+
+  <!-- ===== NAV ===== -->
+  <nav id="nav" style="position: fixed; top: 0; left: 0; right: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 18px clamp(20px, 4vw, 56px); background: linear-gradient(180deg, rgba(15,13,9,0.55), rgba(15,13,9,0)); transition: background .3s ease, box-shadow .3s ease, padding .3s ease;">
+    <div style="display: flex; align-items: center; gap: 12px; color: #F4EEE3;">
+      <div style="width: 34px; height: 34px; border: 1.5px solid rgba(244,238,227,0.65); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 17px;">B</div>
+      <span style="font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 500;">Boog Makelaardij</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: clamp(16px, 3vw, 40px);">
+      <a class="nav-link" href="#verhaal" style="color: rgba(244,238,227,0.82); text-decoration: none; font-size: 13px; letter-spacing: 0.04em;">Het verhaal</a>
+      <a class="nav-link" href="#binnen" style="color: rgba(244,238,227,0.82); text-decoration: none; font-size: 13px; letter-spacing: 0.04em;">Binnen</a>
+      <a class="nav-link" href="#galerij" style="color: rgba(244,238,227,0.82); text-decoration: none; font-size: 13px; letter-spacing: 0.04em;">Galerij</a>
+      <a class="nav-link" href="#plattegronden" style="color: rgba(244,238,227,0.82); text-decoration: none; font-size: 13px; letter-spacing: 0.04em;">Plattegronden</a>
+      <a class="nav-cta" href="#contact" style="display: inline-flex; align-items: center; padding: 10px 20px; border: 1px solid rgba(244,238,227,0.55); border-radius: 100px; color: #F4EEE3; text-decoration: none; font-size: 13px; letter-spacing: 0.04em;">Bezichtiging</a>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <header style="position: relative; height: 100vh; min-height: 620px; display: flex; align-items: flex-end; overflow: hidden;">
+    <div class="foto foto--hero" style="position: absolute; inset: 0; background-size: cover; background-position: center 45%;"></div>
+    <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,13,9,0.30) 0%, rgba(15,13,9,0.05) 32%, rgba(15,13,9,0.62) 100%);"></div>
+    <div style="position: relative; z-index: 2; width: 100%; padding: 0 clamp(20px, 4vw, 56px) clamp(40px, 6vh, 72px); color: #F4EEE3;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 18px; animation: floatUp .8s ease both;">
+        <span style="width: 26px; height: 1px; background: rgba(244,238,227,0.7);"></span>
+        <span style="font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase;">Amersfoort · Vathorst</span>
+      </div>
+      <h1 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(48px, 9vw, 132px); line-height: 0.92; letter-spacing: -0.01em; animation: floatUp 1s ease .08s both;">Eschberg 44</h1>
+      <p style="margin: 16px 0 0; max-width: 560px; font-size: clamp(15px, 1.4vw, 19px); line-height: 1.55; color: rgba(244,238,227,0.9); animation: floatUp 1s ease .16s both;">Een kant-en-klare, stijlvolle jaren-30 woning met sfeervolle ronde erker — verscholen in het groen op het hoekje van de Eschberg.</p>
+      <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 28px; margin-top: 30px; animation: floatUp 1s ease .24s both;">
+        <span style="font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 3.4vw, 42px); font-weight: 600;">€ 935.000</span>
+        <span style="font-size: 13px; letter-spacing: 0.06em; color: rgba(244,238,227,0.78);">v.o.n. vraagprijs · A+ energielabel · 174 m² wonen</span>
+      </div>
+    </div>
+    <div style="position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: 2; color: rgba(244,238,227,0.8); animation: scrollNudge 2s ease-in-out infinite;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 5v14M6 13l6 6 6-6"></path></svg>
+    </div>
+  </header>
+
+  <!-- ===== STATS ===== -->
+  <section style="background: var(--accent); color: #F4EEE3;">
+    <div class="stats-grid" style="max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr);">
+      <div style="padding: clamp(28px, 4vw, 46px) 24px; text-align: center; border-right: 1px solid rgba(244,238,227,0.16);"><div style="font-family: 'Cormorant Garamond', serif; font-size: clamp(38px, 5vw, 58px); font-weight: 600; line-height: 1;">174<span style="font-size: 0.4em; vertical-align: super; margin-left: 3px;">m²</span></div><div style="margin-top: 8px; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(244,238,227,0.7);">Woonoppervlak</div></div>
+      <div style="padding: clamp(28px, 4vw, 46px) 24px; text-align: center; border-right: 1px solid rgba(244,238,227,0.16);"><div style="font-family: 'Cormorant Garamond', serif; font-size: clamp(38px, 5vw, 58px); font-weight: 600; line-height: 1;">268<span style="font-size: 0.4em; vertical-align: super; margin-left: 3px;">m²</span></div><div style="margin-top: 8px; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(244,238,227,0.7);">Perceel</div></div>
+      <div style="padding: clamp(28px, 4vw, 46px) 24px; text-align: center; border-right: 1px solid rgba(244,238,227,0.16);"><div style="font-family: 'Cormorant Garamond', serif; font-size: clamp(38px, 5vw, 58px); font-weight: 600; line-height: 1;">4</div><div style="margin-top: 8px; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(244,238,227,0.7);">Slaapkamers</div></div>
+      <div style="padding: clamp(28px, 4vw, 46px) 24px; text-align: center;"><div style="font-family: 'Cormorant Garamond', serif; font-size: clamp(38px, 5vw, 58px); font-weight: 600; line-height: 1;">A+</div><div style="margin-top: 8px; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(244,238,227,0.7);">Energielabel</div></div>
+    </div>
+  </section>
+
+  <!-- ===== VERHAAL ===== -->
+  <section id="verhaal" style="max-width: 980px; margin: 0 auto; padding: clamp(72px, 12vh, 140px) clamp(20px, 5vw, 40px); text-align: center;">
+    <div style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 28px;">
+      <span style="width: 22px; height: 1px; background: var(--brick);"></span>
+      <span style="font-size: 12px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--brick);">22 jaar met liefde bewoond</span>
+      <span style="width: 22px; height: 1px; background: var(--brick);"></span>
+    </div>
+    <p style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: clamp(26px, 3.6vw, 46px); line-height: 1.28; font-weight: 400; letter-spacing: -0.005em;">Twee-en-twintig jaar lang was dit hoekje van de Eschberg thuis. Nu, van de eerste eigenaar, wacht een <em style="font-style: italic; color: var(--accent);">volledig up-to-date</em> jaren-30 woning op nieuwe bewoners — met de wens dat zij hier net zoveel plezier en genot zullen vinden.</p>
+    <p style="margin: 34px auto 0; max-width: 640px; font-size: 16px; line-height: 1.75; color: #554d40;">In de zomer een beetje verscholen tussen het groen — natuurlijke koelte als de dagen warm zijn. In de wintermaanden vult de ruime zitkamer zich juist met de heerlijke warmte van het laagstaande zonlicht. Een huis dat met de seizoenen meebeweegt.</p>
+  </section>
+
+  <!-- ===== WOONKAMER ===== -->
+  <section id="binnen" style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 56px);">
+    <div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 80px); align-items: center;">
+      <div>
+        <span style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; color: var(--brick);">01 — De leefruimte</span>
+        <h2 style="margin: 14px 0 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(34px, 4.6vw, 62px); line-height: 1.02; letter-spacing: -0.01em;">Zonovergoten,<br>met de ronde erker als hart</h2>
+        <p style="margin: 26px 0 0; font-size: 16px; line-height: 1.75; color: #554d40;">De sfeervolle ronde erker is hét kenmerk van deze woning. Natuurlijk licht stroomt door de aansluitende raampartijen naar binnen, en de erker biedt een prachtig uitzicht op het omliggende groen dat in elk seizoen verandert. Een heerlijke plek om de krant te lezen of een gezellig spelletje te spelen.</p>
+        <ul style="margin: 26px 0 0; padding: 0; list-style: none; display: grid; gap: 12px;">
+          <li style="display: flex; gap: 12px; font-size: 15px; color: #3a342b;"><span style="color: var(--accent);">—</span> Doorlopende leefruimte van erker tot keuken</li>
+          <li style="display: flex; gap: 12px; font-size: 15px; color: #3a342b;"><span style="color: var(--accent);">—</span> Complete traprenovatie met ledverlichting (2026)</li>
+          <li style="display: flex; gap: 12px; font-size: 15px; color: #3a342b;"><span style="color: var(--accent);">—</span> Nieuwe raambekleding (2025) · airco aanwezig</li>
+        </ul>
+      </div>
+      <div class="foto foto--woonkamer plancell" data-photo="image00008" style="width: 100%; aspect-ratio: 4/5; border-radius: 4px; overflow: hidden; background-size:cover; background-position:center;"></div>
+    </div>
+  </section>
+
+  <!-- ===== KEUKEN ===== -->
+  <section style="max-width: 1240px; margin: 0 auto; padding: clamp(64px, 10vh, 130px) clamp(20px, 4vw, 56px) 0;">
+    <div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 80px); align-items: center;">
+      <div class="foto foto--keuken plancell" data-photo="image00013" style="width: 100%; aspect-ratio: 5/4; border-radius: 4px; overflow: hidden; order: 1; background-size:cover; background-position:center;"></div>
+      <div style="order: 2;">
+        <span style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; color: var(--brick);">02 — De keuken</span>
+        <h2 style="margin: 14px 0 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(34px, 4.6vw, 62px); line-height: 1.02; letter-spacing: -0.01em;">Een luxe keuken<br>voor culinaire avonturen</h2>
+        <p style="margin: 26px 0 0; font-size: 16px; line-height: 1.75; color: #554d40;">De recente keuken (2019) met kook- en spoeleiland is een fijne plek voor gezellig samenzijn. Ruimte voor een eethoek, en in de erker een tweede plekje aan tafel. Alles is er om te koken zoals u wilt.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px;">
+          <span style="padding: 8px 15px; border: 1px solid rgba(34,29,22,0.16); border-radius: 100px; font-size: 13px; color: #3a342b;">Quooker</span>
+          <span style="padding: 8px 15px; border: 1px solid rgba(34,29,22,0.16); border-radius: 100px; font-size: 13px; color: #3a342b;">Inductie kookplaat</span>
+          <span style="padding: 8px 15px; border: 1px solid rgba(34,29,22,0.16); border-radius: 100px; font-size: 13px; color: #3a342b;">Oven &amp; magnetron</span>
+          <span style="padding: 8px 15px; border: 1px solid rgba(34,29,22,0.16); border-radius: 100px; font-size: 13px; color: #3a342b;">Koelkast &amp; vriezer</span>
+          <span style="padding: 8px 15px; border: 1px solid rgba(34,29,22,0.16); border-radius: 100px; font-size: 13px; color: #3a342b;">Vaatwasser</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BUITEN ===== -->
+  <section id="buiten" style="margin-top: clamp(72px, 12vh, 140px); position: relative;">
+    <div style="position: relative; height: clamp(440px, 80vh, 820px); overflow: hidden;">
+      <div class="foto foto--tuin" style="position: absolute; inset: 0; background-size: cover; background-position: center 55%;"></div>
+      <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(15,13,9,0.68) 0%, rgba(15,13,9,0.18) 55%, rgba(15,13,9,0) 100%);"></div>
+      <div style="position: relative; z-index: 2; max-width: 1240px; margin: 0 auto; height: 100%; display: flex; align-items: center; padding: 0 clamp(20px, 4vw, 56px);">
+        <div style="max-width: 520px; color: #F4EEE3;">
+          <span style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; color: rgba(244,238,227,0.85);">03 — Buitenleven</span>
+          <h2 style="margin: 14px 0 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(34px, 5vw, 66px); line-height: 1.0; letter-spacing: -0.01em;">Een zijtuin die uitnodigt tot buitenleven</h2>
+          <p style="margin: 24px 0 0; font-size: 16px; line-height: 1.75; color: rgba(244,238,227,0.9);">De fraai aangelegde, volledig omsloten zijtuin met terras en buitenkeuken biedt volop ruimte voor diners en loungen. Tussen de woning en de garage ligt een sfeervolle, verwarmbare uitbouw met een glazen schuifwand die 's zomers volledig kan worden opengeschoven — een naadloze doorloop naar buiten.</p>
+        </div>
+      </div>
+    </div>
+    <div class="feat-3" style="max-width: 1240px; margin: 0 auto; padding: clamp(40px, 6vw, 72px) clamp(20px, 4vw, 56px); display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(24px, 4vw, 56px);">
+      <div><h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600;">Glazen schuifwand</h3><p style="margin: 10px 0 0; font-size: 15px; line-height: 1.7; color: #554d40;">Zomers volledig open te schuiven; twee grote lichtkoepels houden daglicht in de woonkeuken.</p></div>
+      <div><h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600;">Buitenkeuken &amp; terras</h3><p style="margin: 10px 0 0; font-size: 15px; line-height: 1.7; color: #554d40;">Ruimte om te dineren en te loungen, met een sproei-installatie die ook het groene dak van de uitbouw voedt.</p></div>
+      <div><h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600;">Groen dak</h3><p style="margin: 10px 0 0; font-size: 15px; line-height: 1.7; color: #554d40;">Op de uitbouw ligt een levend, groen dak — koeler in de zomer en mooi vanuit het hoge uitzicht.</p></div>
+    </div>
+  </section>
+
+  <!-- ===== DUURZAAMHEID ===== -->
+  <section style="background: #EBE4D5;">
+    <div class="grid-2" style="max-width: 1240px; margin: 0 auto; padding: clamp(64px, 10vh, 120px) clamp(20px, 4vw, 56px); display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 80px); align-items: center;">
+      <div>
+        <span style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; color: var(--brick);">04 — Duurzaam wonen</span>
+        <h2 style="margin: 14px 0 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(32px, 4.4vw, 58px); line-height: 1.04; letter-spacing: -0.01em;">Modern comfort met een A+ label</h2>
+        <p style="margin: 24px 0 0; font-size: 16px; line-height: 1.75; color: #554d40;">Laad uw auto op met uw eigen zonnepanelen. De woning is klaar voor de toekomst — verzorgd, geïsoleerd en zuinig, zonder in te leveren op karakter.</p>
+        <div class="duur-metrics" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px 28px; margin-top: 32px;">
+          <div style="border-top: 1px solid rgba(34,29,22,0.16); padding-top: 14px;"><div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 600;">12</div><div style="font-size: 13px; color: #554d40;">Zonnepanelen (2023)</div></div>
+          <div style="border-top: 1px solid rgba(34,29,22,0.16); padding-top: 14px;"><div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 600;">Laadpaal</div><div style="font-size: 13px; color: #554d40;">Eigen oprit voor de garage</div></div>
+          <div style="border-top: 1px solid rgba(34,29,22,0.16); padding-top: 14px;"><div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 600;">HR + zonneboiler</div><div style="font-size: 13px; color: #554d40;">Combi-ketel (2018)</div></div>
+          <div style="border-top: 1px solid rgba(34,29,22,0.16); padding-top: 14px;"><div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 600;">Alarm &amp; airco</div><div style="font-size: 13px; color: #554d40;">Comfort het hele jaar</div></div>
+        </div>
+      </div>
+      <div class="foto foto--duurzaam plancell" data-photo="image00049" style="width: 100%; aspect-ratio: 3/2; border-radius: 4px; overflow: hidden; background-size: cover; background-position: center;"></div>
+    </div>
+  </section>
+
+  <!-- ===== SLAAPKAMERS ===== -->
+  <section style="max-width: 1240px; margin: 0 auto; padding: clamp(72px, 11vh, 130px) clamp(20px, 4vw, 56px);">
+    <div style="text-align: center; max-width: 720px; margin: 0 auto;">
+      <span style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; color: var(--brick);">05 — Slapen &amp; baden</span>
+      <h2 style="margin: 14px 0 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(32px, 4.4vw, 58px); line-height: 1.04;">Vier slaapkamers over twee verdiepingen</h2>
+    </div>
+    <div class="slaap-grid" style="display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(24px, 4vw, 48px); margin-top: clamp(40px, 6vw, 64px); align-items: stretch;">
+      <div style="display: grid; gap: clamp(24px, 4vw, 48px);">
+        <div class="slaap-cards" style="display: grid; grid-template-columns: 1fr 1fr; gap: 28px;">
+          <div style="background: #FBF8F1; border: 1px solid rgba(34,29,22,0.08); border-radius: 4px; padding: 28px;"><div style="font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--accent);">1e verdieping</div><p style="margin: 12px 0 0; font-size: 15px; line-height: 1.7; color: #554d40;">Twee ruime slaapkamers. De master-bedroom heeft een royale inloopkast. De overloop krijgt daglicht via de balkondeur naar het ronde dakterras — ideaal voor het luchten van beddengoed.</p></div>
+          <div style="background: #FBF8F1; border: 1px solid rgba(34,29,22,0.08); border-radius: 4px; padding: 28px;"><div style="font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--accent);">2e verdieping</div><p style="margin: 12px 0 0; font-size: 15px; line-height: 1.7; color: #554d40;">Dankzij dakkapellen aan voor- én achterzijde nog eens twee ruime slaapkamers, plus een tweede badkamer, wasruimte en handige bergingen in de schuine wanden.</p></div>
+        </div>
+        <div style="background: var(--accent); color: #F4EEE3; border-radius: 4px; padding: 32px; display: flex; flex-direction: column; justify-content: center;"><div style="font-family: 'Cormorant Garamond', serif; font-size: clamp(24px, 2.6vw, 34px); line-height: 1.2;">Twee complete badkamers, drie toiletten</div><p style="margin: 14px 0 0; font-size: 15px; line-height: 1.7; color: rgba(244,238,227,0.85);">De hoofdbadkamer is ruim en netjes, met dubbel wastafelmeubel, ruime inloopdouche en tweede toilet. Op zolder brengt de vlizotrap u naar de bergzolder.</p></div>
+      </div>
+      <div class="foto foto--slaap plancell" data-photo="image00021" style="width: 100%; border-radius: 4px; overflow: hidden; background-size: cover; background-position: center; min-height: 380px;"></div>
+    </div>
+  </section>
+
+  <!-- ===== GALERIJ ===== -->
+  <section id="galerij" style="background:#FBF8F1;">
+    <div style="max-width:1280px; margin:0 auto; padding:clamp(72px,11vh,130px) clamp(20px,4vw,56px);">
+      <div style="text-align:center; max-width:760px; margin:0 auto clamp(30px,4vw,44px);">
+        <span style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:22px; color:var(--brick);">De volledige rondleiding</span>
+        <h2 style="margin:12px 0 0; font-family:'Cormorant Garamond',serif; font-weight:500; font-size:clamp(32px,4.4vw,58px); line-height:1.04;">Alle foto's van Eschberg 44</h2>
+        <p style="margin:20px auto 0; max-width:560px; font-size:16px; line-height:1.75; color:#554d40;">Kamer voor kamer, van erker tot zolder en de zijtuin. Klik op een foto om deze groot te bekijken en door de reeks te bladeren.</p>
+      </div>
+      <div id="gfilter" class="gfilter"></div>
+      <div id="ggrid" class="ggrid"></div>
+    </div>
+  </section>
+
+  <!-- ===== TIJDLIJN ===== -->
+  <section style="max-width: 1080px; margin: 0 auto; padding: clamp(72px, 11vh, 130px) clamp(20px, 4vw, 56px);">
+    <div style="text-align: center; margin-bottom: clamp(40px, 6vw, 64px);">
+      <span style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; color: var(--brick);">Volledig up-to-date</span>
+      <h2 style="margin: 12px 0 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(32px, 4.4vw, 56px);">De afgelopen jaren verzorgd</h2>
+    </div>
+    <div style="display: grid; gap: 0;">
+      <div class="time-row" style="display: grid; grid-template-columns: 120px 1fr; gap: 28px; padding: 22px 0; border-top: 1px solid rgba(34,29,22,0.14); align-items: baseline;"><div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 600; color: var(--accent);">2018</div><div style="font-size: 16px; color: #3a342b;">HR combi-ketel geplaatst, met zonneboiler in de stookruimte.</div></div>
+      <div class="time-row" style="display: grid; grid-template-columns: 120px 1fr; gap: 28px; padding: 22px 0; border-top: 1px solid rgba(34,29,22,0.14); align-items: baseline;"><div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 600; color: var(--accent);">2019</div><div style="font-size: 16px; color: #3a342b;">Luxe keuken met kook- en spoeleiland.</div></div>
+      <div class="time-row" style="display: grid; grid-template-columns: 120px 1fr; gap: 28px; padding: 22px 0; border-top: 1px solid rgba(34,29,22,0.14); align-items: baseline;"><div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 600; color: var(--accent);">2023</div><div style="font-size: 16px; color: #3a342b;">12 zonnepanelen op het dak.</div></div>
+      <div class="time-row" style="display: grid; grid-template-columns: 120px 1fr; gap: 28px; padding: 22px 0; border-top: 1px solid rgba(34,29,22,0.14); align-items: baseline;"><div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 600; color: var(--accent);">2025</div><div style="font-size: 16px; color: #3a342b;">Nieuwe raambekleding door het hele huis.</div></div>
+      <div class="time-row" style="display: grid; grid-template-columns: 120px 1fr; gap: 28px; padding: 22px 0; border-top: 1px solid rgba(34,29,22,0.14); border-bottom: 1px solid rgba(34,29,22,0.14); align-items: baseline;"><div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 600; color: var(--accent);">2026</div><div style="font-size: 16px; color: #3a342b;">Volledige traprenovatie met ledverlichting.</div></div>
+    </div>
+  </section>
+
+  <!-- ===== PLATTEGRONDEN ===== -->
+  <section id="plattegronden" style="background: #EBE4D5;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: clamp(64px, 10vh, 120px) clamp(20px, 4vw, 56px);">
+      <div style="text-align: center; margin-bottom: clamp(40px, 6vw, 60px);">
+        <span style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; color: var(--brick);">Indeling</span>
+        <h2 style="margin: 12px 0 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(32px, 4.4vw, 56px);">Plattegronden</h2>
+      </div>
+      <div class="plat-4" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(16px, 2vw, 28px);">
+        <figure style="margin: 0;"><div class="foto foto--plat1 plancell" data-photo="image00050" style="border: 1px solid rgba(34,29,22,0.08); border-radius: 4px; overflow: hidden; aspect-ratio: 3/4; background-size: contain; background-position: center; background-color: #FBF8F1;"></div><figcaption style="margin-top: 12px; text-align: center; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #554d40;">Begane grond</figcaption></figure>
+        <figure style="margin: 0;"><div class="foto foto--plat2 plancell" data-photo="image00051" style="border: 1px solid rgba(34,29,22,0.08); border-radius: 4px; overflow: hidden; aspect-ratio: 3/4; background-size: contain; background-position: center; background-color: #FBF8F1;"></div><figcaption style="margin-top: 12px; text-align: center; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #554d40;">1e verdieping</figcaption></figure>
+        <figure style="margin: 0;"><div class="foto foto--plat3 plancell" data-photo="image00052" style="border: 1px solid rgba(34,29,22,0.08); border-radius: 4px; overflow: hidden; aspect-ratio: 3/4; background-size: contain; background-position: center; background-color: #FBF8F1;"></div><figcaption style="margin-top: 12px; text-align: center; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #554d40;">2e verdieping</figcaption></figure>
+        <figure style="margin: 0;"><div class="foto foto--plat4 plancell" data-photo="image00053" style="border: 1px solid rgba(34,29,22,0.08); border-radius: 4px; overflow: hidden; aspect-ratio: 3/4; background-size: contain; background-position: center; background-color: #FBF8F1;"></div><figcaption style="margin-top: 12px; text-align: center; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #554d40;">Zolder</figcaption></figure>
+      </div>
+      <div style="margin-top:clamp(24px,3vw,36px); display:grid; grid-template-columns:1fr; gap:0;">
+        <figure style="margin:0; max-width:820px; margin-left:auto; margin-right:auto; width:100%;"><div class="foto foto--plat5 plancell" data-photo="image00054" style="border:1px solid rgba(34,29,22,0.08); border-radius:4px; overflow:hidden; aspect-ratio:16/10; background-size:contain; background-position:center; background-color:#FBF8F1;"></div><figcaption style="margin-top:12px; text-align:center; font-size:13px; letter-spacing:0.14em; text-transform:uppercase; color:#554d40;">Doorsnede in 3D — alle verdiepingen</figcaption></figure>
+      </div>
+      <div class="grid-2" style="margin-top: clamp(32px, 5vw, 52px); display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(24px, 4vw, 48px); align-items: center;">
+        <div>
+          <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600;">Garage &amp; berging</h3>
+          <p style="margin: 12px 0 0; font-size: 15px; line-height: 1.7; color: #554d40; max-width: 460px;">De aangrenzende garage — nu in gebruik als opslagruimte — heeft een eigen oprit met laadpaal. In de schuine wanden op zolder zijn handige bergingen weggewerkt; alles is doordacht benut.</p>
+        </div>
+        <div class="foto foto--garage plancell" data-photo="image00044" style="width: 100%; aspect-ratio: 3/2; border-radius: 4px; overflow: hidden; background-size: cover; background-position: center;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LIGGING ===== -->
+  <section style="position: relative;">
+    <div style="position: relative; height: clamp(460px, 78vh, 780px); overflow: hidden;">
+      <div class="foto foto--ligging" style="position: absolute; inset: 0; background-size: cover; background-position: center;"></div>
+      <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,13,9,0.5) 0%, rgba(15,13,9,0.1) 40%, rgba(15,13,9,0.55) 100%);"></div>
+      <div style="position: relative; z-index: 2; max-width: 1240px; margin: 0 auto; height: 100%; display: flex; flex-direction: column; justify-content: center; padding: 0 clamp(20px, 4vw, 56px); color: #F4EEE3;">
+        <span style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; color: rgba(244,238,227,0.85);">06 — De ligging</span>
+        <h2 style="margin: 14px 0 0; max-width: 700px; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(34px, 5vw, 68px); line-height: 1.0; letter-spacing: -0.01em;">Wonen op het hoekje, in het groen van Vathorst</h2>
+        <p style="margin: 24px 0 0; max-width: 600px; font-size: 16px; line-height: 1.75; color: rgba(244,238,227,0.9);">De laatste woning op de hoek van Darthuizerberg en Eschberg — een kindvriendelijke omgeving met alle voorzieningen binnen handbereik. Winkels, parken en sportfaciliteiten in de buurt, goede uitvalswegen en NS-station Amersfoort Vathorst voor gemakkelijke bereikbaarheid.</p>
+      </div>
+    </div>
+    <div style="max-width:1240px; margin:0 auto; padding:clamp(40px,6vw,72px) clamp(20px,4vw,56px);">
+      <div id="mapgrid" class="map-4" style="display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(12px,1.6vw,20px);"></div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" style="background: var(--accent); color: #F4EEE3;">
+    <div style="max-width: 1100px; margin: 0 auto; padding: clamp(72px, 12vh, 140px) clamp(20px, 4vw, 56px); text-align: center;">
+      <span style="font-size: 12px; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(244,238,227,0.7);">Bezichtigingen zijn gestart</span>
+      <h2 style="margin: 18px 0 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(34px, 5.2vw, 74px); line-height: 1.02; letter-spacing: -0.01em;">Kom de sfeer proeven</h2>
+      <p style="margin: 22px auto 0; max-width: 560px; font-size: 17px; line-height: 1.7; color: rgba(244,238,227,0.88);">Maak gerust een vrijblijvende tour door deze fijn gelegen 2/1-kapwoning. We ontvangen u graag aan de Eschberg 44.</p>
+      <div style="margin: 40px auto 0; max-width: 620px; background: rgba(244,238,227,0.06); border: 1px solid rgba(244,238,227,0.2); border-radius: 6px; padding: clamp(28px, 4vw, 44px); text-align: left;">
+        <div style="font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600;">Etienne van Boog</div>
+        <div style="margin-top: 4px; font-size: 14px; letter-spacing: 0.08em; color: rgba(244,238,227,0.7);">Boog Makelaardij · Amersfoort</div>
+        <div style="height: 1px; background: rgba(244,238,227,0.18); margin: 24px 0;"></div>
+        <div class="contact-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px 28px;">
+          <div><div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(244,238,227,0.55);">Telefoon</div><a href="tel:0334630925" style="color: #F4EEE3; text-decoration: none; font-size: 17px;">033 - 463 09 25</a></div>
+          <div><div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(244,238,227,0.55);">E-mail</div><a href="mailto:info@boog-makelaardij.nl" style="color: #F4EEE3; text-decoration: none; font-size: 17px;">info@boog-makelaardij.nl</a></div>
+          <div style="grid-column: 1 / -1;"><div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(244,238,227,0.55);">Kantoor</div><div style="font-size: 15px; color: rgba(244,238,227,0.9);">Koningin Beatrixplantsoen 26, 3818 ZB Amersfoort</div></div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px;">
+          <a class="btn-solid" href="tel:0334630925" style="flex: 1; min-width: 160px; text-align: center; padding: 14px 22px; background: #F4EEE3; color: var(--accent); text-decoration: none; border-radius: 100px; font-weight: 600; font-size: 15px;">Bel voor een bezichtiging</a>
+          <a class="btn-line" href="mailto:info@boog-makelaardij.nl?subject=Bezichtiging%20Eschberg%2044" style="flex: 1; min-width: 160px; text-align: center; padding: 14px 22px; border: 1px solid rgba(244,238,227,0.6); color: #F4EEE3; text-decoration: none; border-radius: 100px; font-weight: 600; font-size: 15px;">Stuur een e-mail</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer style="background: #1C1912; color: rgba(244,238,227,0.6); padding: 40px clamp(20px, 4vw, 56px);">
+    <div style="max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px;">
+      <div style="font-family: 'Cormorant Garamond', serif; font-size: 20px; color: rgba(244,238,227,0.85);">Eschberg 44 · 3825 BG Amersfoort</div>
+      <div style="font-size: 12px; letter-spacing: 0.04em;">Boog Makelaardij · KvK 32112318 · BTW NL001940659B59</div>
+    </div>
+  </footer>
+
+  <!-- ===== FLOATING BAR ===== -->
+  <div class="bar-float" style="position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%); z-index: 40; display: flex; align-items: center; gap: 18px; padding: 12px 14px 12px 24px; background: rgba(28,25,18,0.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(244,238,227,0.14); border-radius: 100px; box-shadow: 0 14px 40px rgba(0,0,0,0.28); color: #F4EEE3;">
+    <span style="font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; white-space: nowrap;">€ 935.000</span>
+    <span style="font-size: 13px; color: rgba(244,238,227,0.6); white-space: nowrap;">Eschberg 44</span>
+    <a class="bar-cta" href="#contact" style="padding: 10px 20px; background: #F4EEE3; color: #1C1912; text-decoration: none; border-radius: 100px; font-weight: 600; font-size: 13px; white-space: nowrap;">Plan bezichtiging</a>
+  </div>
+
+  <!-- ===== LIGHTBOX ===== -->
+  <div id="lb" role="dialog" aria-modal="true" aria-label="Fotoweergave">
+    <div class="lbbar"><span id="lbCount"></span><span class="lbcap" id="lbCap"></span><button id="lbClose" aria-label="Sluiten">&times;</button></div>
+    <button class="lbnav" id="lbPrev" aria-label="Vorige"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 6l-6 6 6 6"/></svg></button>
+    <img id="lbImg" alt="">
+    <button class="lbnav" id="lbNext" aria-label="Volgende"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 6l6 6-6 6"/></svg></button>
+  </div>
+
+</div>
+
+<script>window.PHOTOS = {"image00001":"assets/image00001.jpg","image00002":"assets/image00002.jpg","image00003":"assets/image00003.jpg","image00004":"assets/image00004.jpg","image00005":"assets/image00005.jpg","image00006":"assets/image00006.jpg","image00007":"assets/image00007.jpg","image00008":"assets/image00008.jpg","image00009":"assets/image00009.jpg","image00010":"assets/image00010.jpg","image00011":"assets/image00011.jpg","image00012":"assets/image00012.jpg","image00013":"assets/image00013.jpg","image00014":"assets/image00014.jpg","image00015":"assets/image00015.jpg","image00016":"assets/image00016.jpg","image00017":"assets/image00017.jpg","image00018":"assets/image00018.jpg","image00019":"assets/image00019.jpg","image00020":"assets/image00020.jpg","image00021":"assets/image00021.jpg","image00022":"assets/image00022.jpg","image00023":"assets/image00023.jpg","image00024":"assets/image00024.jpg","image00025":"assets/image00025.jpg","image00026":"assets/image00026.jpg","image00027":"assets/image00027.jpg","image00028":"assets/image00028.jpg","image00029":"assets/image00029.jpg","image00030":"assets/image00030.jpg","image00031":"assets/image00031.jpg","image00032":"assets/image00032.jpg","image00033":"assets/image00033.jpg","image00034":"assets/image00034.jpg","image00035":"assets/image00035.jpg","image00036":"assets/image00036.jpg","image00037":"assets/image00037.jpg","image00038":"assets/image00038.jpg","image00039":"assets/image00039.jpg","image00040":"assets/image00040.jpg","image00041":"assets/image00041.jpg","image00042":"assets/image00042.jpg","image00043":"assets/image00043.jpg","image00044":"assets/image00044.jpg","image00045":"assets/image00045.jpg","image00046":"assets/image00046.jpg","image00047":"assets/image00047.jpg","image00048":"assets/image00048.jpg","image00049":"assets/image00049.jpg","image00050":"assets/image00050.jpg","image00051":"assets/image00051.jpg","image00052":"assets/image00052.jpg","image00053":"assets/image00053.jpg","image00054":"assets/image00054.jpg","image00055":"assets/image00055.jpg","image00057":"assets/image00057.jpg","image00058":"assets/image00058.jpg"};</script>
+<script>window.GCONFIG = {"slots":{"hero":"image00047","woonkamer":"image00008","keuken":"image00013","tuin":"image00046","duurzaam":"image00049","slaap":"image00021","ligging":"image00057","plat1":"image00050","plat2":"image00051","plat3":"image00052","plat4":"image00053","plat5":"image00054","garage":"image00044"},"gallery":[{"id":"woon","label":"Woonkamer & erker","imgs":["image00008","image00009","image00010","image00015","image00016","image00017","image00019"]},{"id":"keuken","label":"Keuken & eetkamer","imgs":["image00012","image00013","image00014","image00018"]},{"id":"entree","label":"Entree & overloop","imgs":["image00011","image00032","image00035","image00043"]},{"id":"slaap","label":"Slaapkamers","imgs":["image00020","image00021","image00023","image00025","image00026","image00029","image00030","image00031"]},{"id":"bad","label":"Badkamers & sanitair","imgs":["image00022","image00024","image00027","image00028","image00036","image00037"]},{"id":"zolder","label":"Zolder & berging","imgs":["image00033","image00034","image00038","image00039","image00042"]},{"id":"tuin","label":"Tuin & terras","imgs":["image00003","image00004","image00005","image00006","image00007","image00040","image00047","image00048"]},{"id":"buiten","label":"Exterieur","imgs":["image00001","image00002","image00044","image00045","image00046","image00049"]}],"maps":[{"img":"image00058","label":"Ligging in Vathorst"},{"img":"image00057","label":"Luchtfoto omgeving"},{"img":"image00055","label":"Woning van bovenaf"},{"img":"image00041","label":"Kavel & perceelgrens"}]};</script>
+<script>
+(function(){
+  var P = window.PHOTOS, C = window.GCONFIG;
+
+  // nav krijgt donkere balk zodra je voorbij de hero scrolt
+  var navEl=document.getElementById('nav');
+  function onScroll(){ if(window.scrollY>60) navEl.classList.add('nav-scrolled'); else navEl.classList.remove('nav-scrolled'); }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  // named narrative slots (background-image)
+  Object.keys(C.slots).forEach(function(slot){
+    var el = document.querySelector('.foto--'+slot);
+    if(el && P[C.slots[slot]]) el.style.backgroundImage = "url('"+P[C.slots[slot]]+"')";
+  });
+
+  // ---- build a flat list for lightbox navigation ----
+  var LB = { items: [], idx: 0 };
+  function openLB(list, i){
+    LB.items = list; LB.idx = i; render(); lb.classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+  function render(){
+    var it = LB.items[LB.idx];
+    lbImg.src = P[it.img]; lbImg.alt = it.label||'';
+    lbCap.textContent = it.label||''; lbCount.textContent = (LB.idx+1)+' / '+LB.items.length;
+  }
+  function move(d){ LB.idx = (LB.idx + d + LB.items.length) % LB.items.length; render(); }
+  function closeLB(){ lb.classList.remove('open'); document.body.style.overflow=''; }
+  var lb=document.getElementById('lb'), lbImg=document.getElementById('lbImg'),
+      lbCap=document.getElementById('lbCap'), lbCount=document.getElementById('lbCount');
+  document.getElementById('lbClose').onclick=closeLB;
+  document.getElementById('lbPrev').onclick=function(){move(-1);};
+  document.getElementById('lbNext').onclick=function(){move(1);};
+  lb.addEventListener('click',function(e){ if(e.target===lb) closeLB(); });
+  document.addEventListener('keydown',function(e){
+    if(!lb.classList.contains('open')) return;
+    if(e.key==='Escape') closeLB(); else if(e.key==='ArrowLeft') move(-1); else if(e.key==='ArrowRight') move(1);
+  });
+  // swipe
+  var sx=0;
+  lb.addEventListener('touchstart',function(e){ sx=e.touches[0].clientX; },{passive:true});
+  lb.addEventListener('touchend',function(e){ var dx=e.changedTouches[0].clientX-sx; if(Math.abs(dx)>45) move(dx<0?1:-1); },{passive:true});
+
+  // ---- gallery ----
+  var flat = [];
+  C.gallery.forEach(function(cat){ cat.imgs.forEach(function(im){ flat.push({img:im,label:cat.label,cat:cat.id}); }); });
+
+  var grid=document.getElementById('ggrid'), filt=document.getElementById('gfilter');
+  var pills=[{id:'all',label:'Alles'}].concat(C.gallery.map(function(c){return {id:c.id,label:c.label};}));
+  var active='all';
+
+  pills.forEach(function(p){
+    var b=document.createElement('button'); b.className='gpill'; b.textContent=p.label;
+    b.setAttribute('aria-pressed', p.id==='all'?'true':'false');
+    b.onclick=function(){ active=p.id;
+      Array.prototype.forEach.call(filt.children,function(x){x.setAttribute('aria-pressed','false');});
+      b.setAttribute('aria-pressed','true'); build(); };
+    filt.appendChild(b);
+  });
+
+  function build(){
+    grid.innerHTML='';
+    var list = active==='all' ? flat : flat.filter(function(x){return x.cat===active;});
+    list.forEach(function(it, i){
+      var fig=document.createElement('figure'); fig.className='gcell';
+      var img=document.createElement('img'); img.loading='lazy'; img.src=P[it.img]; img.alt=it.label;
+      var tag=document.createElement('span'); tag.className='gtag'; tag.textContent=it.label;
+      fig.appendChild(img); fig.appendChild(tag);
+      fig.onclick=function(){ openLB(list, i); };
+      grid.appendChild(fig);
+    });
+  }
+  build();
+
+  // plancells (narrative photos + plattegronden + garage) -> own lightbox
+  Array.prototype.forEach.call(document.querySelectorAll('.plancell'), function(el){
+    var key=el.getAttribute('data-photo'); if(!key||!P[key]) return;
+    el.addEventListener('click',function(){ openLB([{img:key,label:''}],0); });
+  });
+
+  // maps
+  var mg=document.getElementById('mapgrid');
+  C.maps.forEach(function(m, i){
+    var fig=document.createElement('figure'); fig.className='gcell'; fig.style.margin='0'; fig.style.aspectRatio='1/1';
+    var img=document.createElement('img'); img.loading='lazy'; img.src=P[m.img]; img.alt=m.label;
+    var tag=document.createElement('span'); tag.className='gtag'; tag.textContent=m.label;
+    fig.appendChild(img); fig.appendChild(tag);
+    fig.onclick=function(){ openLB(C.maps.map(function(x){return {img:x.img,label:x.label};}), i); };
+    mg.appendChild(fig);
+  });
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SingleFamilyResidence",
+  "name": "Eschberg 44",
+  "description": "Stijlvolle, volledig up-to-date jaren-30 woning met sfeervolle ronde erker in Amersfoort Vathorst.",
+  "numberOfBedrooms": 4,
+  "floorSize": { "@type": "QuantitativeValue", "value": 174, "unitCode": "MTK" },
+  "address": { "@type": "PostalAddress", "streetAddress": "Eschberg 44", "postalCode": "3825 BG", "addressLocality": "Amersfoort", "addressCountry": "NL" },
+  "offers": { "@type": "Offer", "price": "935000", "priceCurrency": "EUR", "availability": "https://schema.org/InStock",
+    "seller": { "@type": "RealEstateAgent", "name": "Boog Makelaardij", "telephone": "+31334630925", "email": "info@boog-makelaardij.nl",
+      "address": { "@type": "PostalAddress", "streetAddress": "Koningin Beatrixplantsoen 26", "postalCode": "3818 ZB", "addressLocality": "Amersfoort", "addressCountry": "NL" } } }
+}
+</script>
+</body>
+</html>
